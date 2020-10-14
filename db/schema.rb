@@ -10,16 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_07_185646) do
+ActiveRecord::Schema.define(version: 2020_10_14_161634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "host_applications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "activity_type"
+    t.string "previous_hosting_experience"
+    t.text "detailed_experience"
+    t.integer "guest_max_num"
+    t.text "additional_experience_info"
+    t.string "location"
+    t.string "location_type"
+    t.text "detailed_description"
+    t.text "links"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_host_applications_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
   end
 
+  add_foreign_key "host_applications", "users"
 end
