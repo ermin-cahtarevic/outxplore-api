@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_14_161634) do
+ActiveRecord::Schema.define(version: 2020_10_15_163711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2020_10_14_161634) do
     t.bigint "user_id"
     t.string "activity_type"
     t.string "previous_hosting_experience"
-    t.text "detailed_experience"
     t.integer "guest_max_num"
     t.text "additional_experience_info"
     t.string "location"
