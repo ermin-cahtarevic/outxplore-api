@@ -13,7 +13,12 @@ class RegistrationsController < ApplicationController
       render json: {
         status: :created,
         logged_in: true,
-        user: user
+        user: {
+          id: user.id,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          email: user.email,
+        },
       }
     else
       render json: { status: 500 }
