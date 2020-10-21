@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_21_154930) do
+ActiveRecord::Schema.define(version: 2020_10_21_221229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(version: 2020_10_21_154930) do
     t.index ["user_id"], name: "index_host_applications_on_user_id"
   end
 
+  create_table "listings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title"
+    t.text "description"
+    t.string "location"
+    t.integer "guest_max_num"
+    t.string "activity_type"
+    t.string "photos", default: [], array: true
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -42,4 +56,5 @@ ActiveRecord::Schema.define(version: 2020_10_21_154930) do
   end
 
   add_foreign_key "host_applications", "users"
+  add_foreign_key "listings", "users"
 end
