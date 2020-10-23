@@ -35,7 +35,7 @@ class UsersController < ApplicationController
           last_name: @current_user.last_name,
           email: @current_user.email,
           photo: @current_user.photo,
-          host: user.host,
+          host: @current_user.host,
         }
       }
     else
