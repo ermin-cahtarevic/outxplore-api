@@ -31,6 +31,15 @@ class ListingsController < ApplicationController
     end
   end
 
+  def index
+    @listings = Listing.all
+
+    render json: {
+      status: 200,
+      listings: @listings
+    }
+  end
+
   private
 
   def authorize_host

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
   resources :host_application, only: [:create]
-  resources :listings, only: [:create]
+  resources :listings, only: [:create, :index]
   get :get_user, to: 'users#get_user'
   put :update_photo, to: 'users#update_photo'
   delete :logout, to: 'sessions#logout'
