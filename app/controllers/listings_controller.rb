@@ -40,6 +40,19 @@ class ListingsController < ApplicationController
     }
   end
 
+  def show
+    @listing = Listing.find(params[:id])
+
+    if @listing
+      render json: {
+        status: 200,
+        listing: @listing,
+      }
+    else
+      render json: { status: 404 }
+    end
+  end
+
   private
 
   def authorize_host
