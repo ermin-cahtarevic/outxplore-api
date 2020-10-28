@@ -42,11 +42,17 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    user = @listing.user
 
     if @listing
       render json: {
         status: 200,
         listing: @listing,
+        user: {
+          first_name: user.first_name,
+          last_name: user.last_name,
+          photo: user.photo,
+        },
       }
     else
       render json: { status: 404 }

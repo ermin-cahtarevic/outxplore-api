@@ -2,6 +2,14 @@ class HostApplicationController < ApplicationController
   include CurrentUserConcern
 
   def create
+    if @current_user.host_application
+      render json: {
+        status: :forbidden,
+        message: 'You have already applied!'
+      }
+      return
+    end
+
     @host_application = @current_user.create_host_application!(
       activity_type: params['host_application']['activity_type'],
       previous_hosting_experience: params['host_application']['previous_hosting_experience'],
