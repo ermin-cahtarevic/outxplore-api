@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include CurrentUserConcern
 
-  def get_user
+  def fetch_user
     user = User.find(params['user']['id'])
 
     if user
@@ -13,12 +13,12 @@ class UsersController < ApplicationController
           last_name: user.last_name,
           email: user.email,
           photo: user.photo,
-          host: user.host,
-        },
+          host: user.host
+        }
       }
     else
       render json: {
-        status: 404,
+        status: 404
       }
     end
   end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
           last_name: @current_user.last_name,
           email: @current_user.email,
           photo: @current_user.photo,
-          host: @current_user.host,
+          host: @current_user.host
         }
       }
     else

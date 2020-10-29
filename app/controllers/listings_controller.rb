@@ -3,10 +3,11 @@ class ListingsController < ApplicationController
 
   before_action :authorize_host, only: :create
 
+  # rubocop:disable Metrics/MethodLength
   def create
     photo_urls = []
 
-    params[:photos].each do |key, photo|
+    params[:photos].each do |_key, photo|
       photo = Cloudinary::Uploader.upload(photo)
       photo_urls << photo['url']
     end
@@ -18,18 +19,19 @@ class ListingsController < ApplicationController
       guest_max_num: params[:guest_max_num],
       location: params[:location],
       price: params[:price],
-      photos: photo_urls,
+      photos: photo_urls
     )
 
     if @listing
       render json: {
         status: 200,
-        listing: @listing,
+        listing: @listing
       }
     else
       render json: { status: 500 }
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def index
     @listings = Listing.all
@@ -51,8 +53,8 @@ class ListingsController < ApplicationController
         user: {
           first_name: user.first_name,
           last_name: user.last_name,
-          photo: user.photo,
-        },
+          photo: user.photo
+        }
       }
     else
       render json: { status: 404 }

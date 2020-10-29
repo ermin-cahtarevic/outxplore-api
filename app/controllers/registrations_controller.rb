@@ -1,4 +1,5 @@
 class RegistrationsController < ApplicationController
+  # rubocop:disable Metrics/MethodLength
   def create
     user = User.create!(
       first_name: params['user']['first_name'],
@@ -19,11 +20,12 @@ class RegistrationsController < ApplicationController
           last_name: user.last_name,
           email: user.email,
           photo: user.photo,
-          host: user.host,
-        },
+          host: user.host
+        }
       }
     else
       render json: { status: 500 }
     end
   end
+  # rubocop:enable Metrics/MethodLength
 end

@@ -1,6 +1,7 @@
 class HostApplicationController < ApplicationController
   include CurrentUserConcern
 
+  # rubocop:disable Metrics/MethodLength
   def create
     if @current_user.host_application
       render json: {
@@ -25,17 +26,18 @@ class HostApplicationController < ApplicationController
       if @host_application
         HostApplicationMailer.with(application: @host_application).application(@host_application).deliver_now
 
-        format.json {
+        format.json do
           render json: {
             status: :created,
             applied: true
           }
-        }
+        end
       else
-        format.json {
+        format.json do
           render json: { status: 500 }
-        }
+        end
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 end
