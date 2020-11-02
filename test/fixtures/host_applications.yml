@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  activity_type: MyString
+  previous_hosting_experience: MyString
+  detailed_experience: MyText
+  guest_max_num: 1
+  additional_experience_info: MyText
+  location: MyString
+  location_type: MyString
+  detailed_description: MyText
+  links: MyText
+
+two:
+  user: two
+  activity_type: MyString
+  previous_hosting_experience: MyString
+  detailed_experience: MyText
+  guest_max_num: 1
+  additional_experience_info: MyText
+  location: MyString
+  location_type: MyString
+  detailed_description: MyText
+  links: MyText
