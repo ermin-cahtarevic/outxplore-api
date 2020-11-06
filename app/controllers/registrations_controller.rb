@@ -20,7 +20,8 @@ class RegistrationsController < ApplicationController
           last_name: user.last_name,
           email: user.email,
           photo: user.photo,
-          host: user.host
+          host: user.host,
+          phone: user.phone,
         }
       }
     else

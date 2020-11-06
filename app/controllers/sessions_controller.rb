@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
           last_name: user.last_name,
           email: user.email,
           photo: user.photo,
-          host: user.host
+          host: user.host,
+          phone: user.phone,
         }
       }
     else
@@ -33,7 +34,8 @@ class SessionsController < ApplicationController
           last_name: @current_user.last_name,
           email: @current_user.email,
           photo: @current_user.photo,
-          host: @current_user.host
+          host: @current_user.host,
+          phone: @current_user.phone,
         }
       }
     else

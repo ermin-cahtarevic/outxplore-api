@@ -53,7 +53,9 @@ class ListingsController < ApplicationController
         user: {
           first_name: user.first_name,
           last_name: user.last_name,
-          photo: user.photo
+          photo: user.photo,
+          phone: user.phone,
+          email: user.email,
         }
       }
     else
